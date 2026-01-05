@@ -87,6 +87,11 @@ C4Component
 
     Container_Boundary(backend, "Backend") {
         
+        Boundary(productsModule, "Módulo de Produtos") {
+            Component(productsAPI, "Products API", "API REST", "Gerencia catálogo de produtos")
+            ComponentDb(productsDB, "Products Database", "MongoDB", "Armazena detalhes dos produtos")
+        }
+
         Boundary(ordersModule, "Módulo de Pedidos") {
             Component(ordersAPI, "Orders API", "API REST", "Gerencia pedidos e orquestra comunicação")
             ComponentDb(ordersDB, "Orders Database", "SQL Server", "Armazena dados de pedidos")
@@ -103,10 +108,7 @@ C4Component
             ComponentDb(usersDB, "Users Database", "SQL Server", "Armazena usuários e customers")
         }
         
-        Boundary(productsModule, "Módulo de Produtos") {
-            Component(productsAPI, "Products API", "API REST", "Gerencia catálogo de produtos")
-            ComponentDb(productsDB, "Products Database", "MongoDB", "Armazena detalhes dos produtos")
-        }
+
     }
 
     System_Ext(mercadopago, "MercadoPago API", "Gateway de pagamento externo")
@@ -135,19 +137,19 @@ C4Component
     UpdateRelStyle(adminUI, usersAPI, $offsetY="-80", $offsetX="100")
     UpdateRelStyle(adminUI, ordersAPI, $offsetY="-60", $offsetX="-70")
     
-    UpdateRelStyle(ordersAPI, productsAPI, $offsetY="-50", $offsetX="-80")
-    UpdateRelStyle(ordersAPI, paymentsAPI,"$lineColor=red", $offsetY="0", $offsetX="-85")
-    UpdateRelStyle(ordersAPI, ordersDB, $offsetY="20", $offsetX="50")
+    UpdateRelStyle(ordersAPI, productsAPI, $offsetY="-300", $offsetX="-150")
+    UpdateRelStyle(ordersAPI, paymentsAPI, $lineColor="red",$textColor="green", $offsetY="20", $offsetX="-85")
+    UpdateRelStyle(ordersAPI, ordersDB, $offsetY="-10", $offsetX="-10")
     
-    UpdateRelStyle(productsAPI, productsDB, $offsetY="20", $offsetX="50")
+    UpdateRelStyle(productsAPI, productsDB, $offsetY="-10", $offsetX="10")
     
     UpdateRelStyle(paymentsAPI, paymentsDB, $offsetY="20", $offsetX="50")
-    UpdateRelStyle(paymentsAPI, mercadopago,"$lineColor=red" $offsetY="-120", $offsetX="20")
+    UpdateRelStyle(paymentsAPI, mercadopago, $lineColor="red",$textColor="green", $offsetY="-120", $offsetX="20")
     
     UpdateRelStyle(usersAPI, usersDB, $offsetY="40", $offsetX="0")
     
     UpdateRelStyle(authFunction, usersDB, $offsetY="40", $offsetX="0")
     UpdateRelStyle(authFunction, usersAPI, $offsetY="-30", $offsetX="0")
     
-    UpdateLayoutConfig($c4ShapeInRow="4", $c4BoundaryInRow="3")
+    UpdateLayoutConfig($c4ShapeInRow="4", $c4BoundaryInRow="4")
 ```
