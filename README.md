@@ -130,26 +130,24 @@ C4Component
     Rel(usersAPI, usersDB, "Lê e grava usuários", "SQL")
     
     Rel(authFunction, usersDB, "Valida credenciais e cria usuários", "SQL")
-    Rel(authFunction, usersAPI, "Sincroniza dados de usuários", "JSON/HTTPS")
 
     UpdateRelStyle(terminal, ordersAPI, $offsetY="-60", $offsetX="-100")
-    UpdateRelStyle(adminUI, productsAPI, $offsetY="-445", $offsetX="90")
+    UpdateRelStyle(adminUI, productsAPI, $offsetY="-105", $offsetX="60")
     UpdateRelStyle(adminUI, usersAPI, $offsetY="-80", $offsetX="100")
     UpdateRelStyle(adminUI, ordersAPI, $offsetY="-60", $offsetX="-70")
     
-    UpdateRelStyle(ordersAPI, productsAPI, $offsetY="-300", $offsetX="-150")
+    UpdateRelStyle(ordersAPI, productsAPI, $offsetY="-40", $offsetX="-80")
     UpdateRelStyle(ordersAPI, paymentsAPI, $lineColor="red",$textColor="green", $offsetY="20", $offsetX="-85")
-    UpdateRelStyle(ordersAPI, ordersDB, $offsetY="-10", $offsetX="-10")
+    UpdateRelStyle(ordersAPI, ordersDB, $lineColor="orange", $textColor="orange", $offsetY="-10", $offsetX="-10")
     
-    UpdateRelStyle(productsAPI, productsDB, $offsetY="-10", $offsetX="10")
+    UpdateRelStyle(productsAPI, productsDB, $lineColor="orange", $textColor="orange",  $offsetY="-10", $offsetX="10")
     
-    UpdateRelStyle(paymentsAPI, paymentsDB, $offsetY="20", $offsetX="50")
+    UpdateRelStyle(paymentsAPI, paymentsDB,$lineColor="orange", $textColor="orange", $offsetY="20", $offsetX="50")
     UpdateRelStyle(paymentsAPI, mercadopago, $lineColor="red",$textColor="green", $offsetY="-120", $offsetX="20")
     
-    UpdateRelStyle(usersAPI, usersDB, $offsetY="40", $offsetX="0")
+    UpdateRelStyle(usersAPI, usersDB, $lineColor="orange", $textColor="orange", $offsetY="-100", $offsetX="0")
     
-    UpdateRelStyle(authFunction, usersDB, $offsetY="40", $offsetX="0")
-    UpdateRelStyle(authFunction, usersAPI, $offsetY="-30", $offsetX="0")
+    UpdateRelStyle(authFunction, usersDB,$lineColor="orange", $textColor="orange", $offsetY="-10", $offsetX="10")
     
     UpdateLayoutConfig($c4ShapeInRow="4", $c4BoundaryInRow="4")
 ```
