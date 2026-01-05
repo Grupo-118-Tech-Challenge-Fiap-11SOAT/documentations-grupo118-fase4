@@ -69,8 +69,8 @@ C4Container
     UpdateRelStyle(customer, ui, $offsetY="-50", $offsetX="-20")
     UpdateRelStyle(admin, adminUI, $offsetY="-50", $offsetX="-50")
     UpdateRelStyle(backend, database, $offsetX="-50", $offsetY="-30")
-    UpdateRelStyle(mercadopago, backend, $offsetX="-200", $offsetY="-20")
-    UpdateRelStyle(backend, mercadopago, $offsetX="50", $offsetY="-20")
+    UpdateRelStyle(mercadopago, backend, $offsetX="-240", $offsetY="-20")
+    UpdateRelStyle(backend, mercadopago, $offsetX="80", $offsetY="-20")
     
     UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
 ```
