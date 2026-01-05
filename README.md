@@ -21,16 +21,12 @@ C4Context
 
     Rel(clienteFinal, sistemaTC, "Realiza pedidos")
     Rel(usuarioAdmin, sistemaTC, "Gerencia sistema")
-    Rel(sistemaTC, mercadoPago, "Processa pagamentos")
-    Rel(mercadoPago, sistemaTC, "Notifica status")
+    BiRel(mercadoPago, sistemaTC, "Processa pagamentos / Notifica Status")
 
+    UpdateRelStyle(clienteFinal, sistemaTC, $offsetY="-40", $offsetX="10")    
+    UpdateRelStyle(mercadoPago, sistemaTC, $offsetY="-20", $offsetX="10")
     UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
 
-    UpdateRelStyle(clienteFinal, sistemaTC, $offsetY="-40", $offsetX="10")
-    
-    UpdateRelStyle(sistemaTC, mercadoPago, $offsetY="-20", $offsetX="20")
-
-    UpdateRelStyle(mercadoPago, sistemaTC, $offsetY="-20", $offsetX="-100")
 ```
 
 ## Diagrama C4 - Visão de Container - Sistema de Pedidos
