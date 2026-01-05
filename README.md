@@ -114,46 +114,40 @@ C4Component
     Rel(terminal, ordersAPI, "Cria e consulta pedidos", "JSON/HTTPS")
     Rel(adminUI, productsAPI, "Gerencia produtos", "JSON/HTTPS")
     Rel(adminUI, usersAPI, "Gerencia usuários", "JSON/HTTPS")
-    Rel(adminUI, ordersAPI, "Consulta pedidos", "JSON/HTTPS")
+    Rel(adminUI, ordersAPI, "Gerencia pedidos", "JSON/HTTPS")
     
     Rel(ordersAPI, productsAPI, "Busca detalhes dos produtos", "JSON/HTTPS")
-    Rel(ordersAPI, paymentsAPI, "Solicita criação de pagamento", "JSON/HTTPS")
+    BiRel(ordersAPI, paymentsAPI, "Solicita pagamento / Notifica status", "JSON/HTTPS")
     Rel(ordersAPI, ordersDB, "Lê e grava pedidos", "SQL")
     
     Rel(productsAPI, productsDB, "Lê e grava produtos", "MongoDB Protocol")
     
     Rel(paymentsAPI, paymentsDB, "Lê e grava pagamentos", "SQL")
-    Rel(paymentsAPI, mercadopago, "Integra para processar pagamento", "JSON/HTTPS")
-    Rel(paymentsAPI, ordersAPI, "Notifica atualização de pagamento", "JSON/HTTPS")
+    BiRel(paymentsAPI, mercadopago, "Processa pagamento / Webhook status", "JSON/HTTPS")
     
     Rel(usersAPI, usersDB, "Lê e grava usuários", "SQL")
     
     Rel(authFunction, usersDB, "Valida credenciais e cria usuários", "SQL")
     Rel(authFunction, usersAPI, "Sincroniza dados de usuários", "JSON/HTTPS")
-    
-    Rel(mercadopago, paymentsAPI, "Envia webhook de status", "JSON/HTTPS")
 
     UpdateRelStyle(terminal, ordersAPI, $offsetY="-60", $offsetX="-100")
-    UpdateRelStyle(adminUI, productsAPI, $offsetY="-60", $offsetX="-50")
+    UpdateRelStyle(adminUI, productsAPI, $offsetY="-445", $offsetX="90")
     UpdateRelStyle(adminUI, usersAPI, $offsetY="-80", $offsetX="100")
-    UpdateRelStyle(adminUI, ordersAPI, $offsetY="-60", $offsetX="50")
+    UpdateRelStyle(adminUI, ordersAPI, $offsetY="-60", $offsetX="-70")
     
     UpdateRelStyle(ordersAPI, productsAPI, $offsetY="-50", $offsetX="-80")
-    UpdateRelStyle(ordersAPI, paymentsAPI, $offsetY="-60", $offsetX="100")
+    UpdateRelStyle(ordersAPI, paymentsAPI,"$lineColor=red", $offsetY="0", $offsetX="-85")
     UpdateRelStyle(ordersAPI, ordersDB, $offsetY="20", $offsetX="50")
     
     UpdateRelStyle(productsAPI, productsDB, $offsetY="20", $offsetX="50")
     
     UpdateRelStyle(paymentsAPI, paymentsDB, $offsetY="20", $offsetX="50")
-    UpdateRelStyle(paymentsAPI, mercadopago, $offsetY="-80", $offsetX="120")
-    UpdateRelStyle(paymentsAPI, ordersAPI, $offsetY="60", $offsetX="-120", $textColor="red", $lineColor="red")
+    UpdateRelStyle(paymentsAPI, mercadopago,"$lineColor=red" $offsetY="-120", $offsetX="20")
     
     UpdateRelStyle(usersAPI, usersDB, $offsetY="40", $offsetX="0")
     
     UpdateRelStyle(authFunction, usersDB, $offsetY="40", $offsetX="0")
     UpdateRelStyle(authFunction, usersAPI, $offsetY="-30", $offsetX="0")
-    
-    UpdateRelStyle(mercadopago, paymentsAPI, $offsetY="80", $offsetX="-120", $textColor="red", $lineColor="red")
     
     UpdateLayoutConfig($c4ShapeInRow="4", $c4BoundaryInRow="3")
 ```
