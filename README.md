@@ -107,8 +107,6 @@ C4Component
             Component(authFunction, "Azure Function Users", "Serverless Function", "Efetiva login e criação de usuários")
             ComponentDb(usersDB, "Users Database", "SQL Server", "Armazena usuários e customers")
         }
-        
-
     }
 
     System_Ext(mercadopago, "MercadoPago API", "Gateway de pagamento externo")
@@ -131,10 +129,10 @@ C4Component
     
     Rel(authFunction, usersDB, "Valida credenciais e cria usuários", "SQL")
 
-    UpdateRelStyle(terminal, ordersAPI, $offsetY="-60", $offsetX="-100")
-    UpdateRelStyle(adminUI, productsAPI, $offsetY="-105", $offsetX="60")
-    UpdateRelStyle(adminUI, usersAPI, $offsetY="-80", $offsetX="100")
-    UpdateRelStyle(adminUI, ordersAPI, $offsetY="-60", $offsetX="-70")
+    UpdateRelStyle(terminal, ordersAPI, $offsetY="-60", $offsetX="-220")
+    UpdateRelStyle(adminUI, productsAPI, $offsetY="-115", $offsetX="-40")
+    UpdateRelStyle(adminUI, usersAPI, $offsetY="-80", $offsetX="-280")
+    UpdateRelStyle(adminUI, ordersAPI, $offsetY="-60", $offsetX="-30")
     
     UpdateRelStyle(ordersAPI, productsAPI, $offsetY="-40", $offsetX="-80")
     UpdateRelStyle(ordersAPI, paymentsAPI, $lineColor="red",$textColor="green", $offsetY="20", $offsetX="-85")
@@ -143,7 +141,7 @@ C4Component
     UpdateRelStyle(productsAPI, productsDB, $lineColor="orange", $textColor="orange",  $offsetY="-10", $offsetX="10")
     
     UpdateRelStyle(paymentsAPI, paymentsDB,$lineColor="orange", $textColor="orange", $offsetY="20", $offsetX="50")
-    UpdateRelStyle(paymentsAPI, mercadopago, $lineColor="red",$textColor="green", $offsetY="-120", $offsetX="20")
+    UpdateRelStyle(paymentsAPI, mercadopago, $lineColor="red",$textColor="green", $offsetY="-120", $offsetX="-60")
     
     UpdateRelStyle(usersAPI, usersDB, $lineColor="orange", $textColor="orange", $offsetY="-100", $offsetX="0")
     
