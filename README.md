@@ -2,7 +2,7 @@
 
 Repositório dedicado a conter diagramas C4 do sistema desenvolvido para a fase 4.
 
-## Diagrama C4 - Contexto do Sistema
+## Diagrama C4 - Contexto do Sistema - Sistema de Pedidos
 
 ```mermaid
 C4Context
@@ -34,7 +34,7 @@ C4Context
 ```
 
 
-## Diagrama de Container - Sistema de Pedidos
+## Diagrama C4 - Visão de Container - Sistema de Pedidos
 
 ```mermaid
 C4Container
