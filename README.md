@@ -129,12 +129,12 @@ C4Component
     
     Rel(authFunction, usersDB, "Valida credenciais e cria usuários", "SQL")
 
-    UpdateRelStyle(terminal, ordersAPI, $offsetY="-60", $offsetX="-220")
-    UpdateRelStyle(adminUI, productsAPI, $offsetY="-115", $offsetX="-40")
-    UpdateRelStyle(adminUI, usersAPI, $offsetY="-80", $offsetX="-280")
-    UpdateRelStyle(adminUI, ordersAPI, $offsetY="-60", $offsetX="-30")
+    UpdateRelStyle(terminal, ordersAPI, $textColor="yellow" ,$offsetY="-60", $offsetX="-220")
+    UpdateRelStyle(adminUI, productsAPI,$textColor="purple", $offsetY="-115", $offsetX="-40")
+    UpdateRelStyle(adminUI, usersAPI,$textColor="purple", $offsetY="-80", $offsetX="-280")
+    UpdateRelStyle(adminUI, ordersAPI,$textColor="purple", $offsetY="-60", $offsetX="-30")
     
-    UpdateRelStyle(ordersAPI, productsAPI, $offsetY="-40", $offsetX="-80")
+    UpdateRelStyle(ordersAPI, productsAPI,$textColor="green", $offsetY="-40", $offsetX="-80")
     UpdateRelStyle(ordersAPI, paymentsAPI, $lineColor="red",$textColor="green", $offsetY="20", $offsetX="-85")
     UpdateRelStyle(ordersAPI, ordersDB, $lineColor="orange", $textColor="orange", $offsetY="-10", $offsetX="-10")
     
