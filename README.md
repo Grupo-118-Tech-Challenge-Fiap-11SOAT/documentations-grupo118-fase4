@@ -125,7 +125,7 @@ O módulo de pagamentos se comunica com a API do MercadoPago para processar as t
 
 ## 4. Módulo de Usuários
 
-- Repositórios: [tech-challenge-grupo-118-users-fase-4](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-payments-users-4) e [TechChallengeFastFoodFunction](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/TechChallengeFastFoodFunction)
+- Repositórios: [tech-challenge-grupo-118-users-fase-4](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-users-fase-4) e [TechChallengeFastFoodFunction](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/TechChallengeFastFoodFunction)
 
 Criamos um microsserviço dedicado à gestão de usuários e aproveitamos a Lambda function criada na fase anterior para efetivar o login e geração do JWT para uso.
 Também utilizamos **SQL Server** para armazenar os dados dos usuários e customers, mantendo a compatibilidade com a implementação anterior.
