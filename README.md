@@ -22,7 +22,7 @@ Criamos um repositório separado para armazenar diversos detalhes acerca da impl
 
 Para assistir ao vídeo de apresentação do projeto, clique na imagem abaixo:
 
-[![Watch the video](11SOAT%20-%20Fase%204%20-%20Grupo%20118.PNG)]()
+[![Watch the video](11SOAT%20-%20Fase%204%20-%20Grupo%20118.PNG)](https://youtu.be/AfJmCrVN2bE)
 
 # Collection do Postman
 Para facilitar o teste dos endpoints da API, foi criada uma que contém os endpoints utilizados no video.

@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "7e2afe2d-37f6-4f8a-bfbc-014b471c3e9b",
+		"name": "Tech-Challenge-118-Fase-4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2189106"
+	},
+	"item": [
+		{
+			"name": "Requests Fase 4",
+			"item": [
+				{
+					"name": "1-Create Employee (Function)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Túlio Henrique de Paula2\",\r\n    \"Surname\" : \"Rezende31\",\r\n    \"Email\": \"teste@teste223456.com\",\r\n    \"Password\": \"Tulio1998\",\r\n    \"Cpf\": \"10755842057\",\r\n    \"Role\": \"Kitchen\",\r\n    \"BirthDay\": \"1995-04-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://grupo118fase3infraapim.azure-api.net/users-api/CreateEmployeeFunction",
+							"protocol": "https",
+							"host": [
+								"grupo118fase3infraapim",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"users-api",
+								"CreateEmployeeFunction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1-Create Employee (Microsservice)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIwIiwidW5pcXVlX25hbWUiOiJBZG1pbiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc2Nzk4MDA4NSwiZXhwIjoxNzY3OTgzNjg1LCJpYXQiOjE3Njc5ODAwODUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MCJ9.MFbpaVnRsvLs3fZRLp9yItnsV0sw1cRBoue6kp-7pzI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Túlio Henrique de Paula4\",\r\n    \"Surname\" : \"Rezende323\",\r\n    \"Email\": \"teste10@teste423456.com.br\",\r\n    \"Password\": \"Tulio1999\",\r\n    \"Cpf\": \"44011246000\",\r\n    \"Role\": 0,\r\n    \"BirthDay\": \"1995-04-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://grupo118fase3infraapim.azure-api.net/users-api/Employee",
+							"protocol": "https",
+							"host": [
+								"grupo118fase3infraapim",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"users-api",
+								"Employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2-Login Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\": \"teste10@teste423456.com.br\",\r\n    \"Password\": \"Tulio1999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://grupo118fase3infraapim.azure-api.net/users-api/Login",
+							"protocol": "https",
+							"host": [
+								"grupo118fase3infraapim",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"users-api",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3-Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIwIiwidW5pcXVlX25hbWUiOiJUw7psaW8gSGVucmlxdWUgZGUgUGF1bGE0Iiwicm9sZSI6IkFkbWluIiwibmJmIjoxNzY3OTgwMTQ4LCJleHAiOjE3Njc5ODM3NDgsImlhdCI6MTc2Nzk4MDE0OCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwIn0.qehSULE-Ex0WrkcukWK9V8MSxlnn-eRx1MKhgZJt6ak",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"accompaniment\",\r\n  \"size\": \"M\",\r\n  \"name\": \"Batata Frita Gigantesca 33 - Demonstração\",\r\n  \"price\": 13.33,\r\n  \"images\": [\r\n    {\r\n      \"position\": 1,\r\n      \"url\": \"https://example.com/images/batata_frita.jpg\"\r\n    }\r\n  ],\r\n  \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://grupo118fase3infraapim.azure-api.net/products-api/Products",
+							"protocol": "https",
+							"host": [
+								"grupo118fase3infraapim",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"products-api",
+								"Products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3-Get Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://grupo118fase3infraapim.azure-api.net/products-api/Products/69613ca3b03eebfc64083e88",
+							"protocol": "https",
+							"host": [
+								"grupo118fase3infraapim",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"products-api",
+								"Products",
+								"69613ca3b03eebfc64083e88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4-Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"10755842057\",\r\n    \"items\": [\r\n        {\r\n            \"productId\": \"695ed9ec2a6b7bb7f043c028\",\r\n            \"quantity\": 2\r\n        },\r\n                {\r\n            \"productId\": \"695ed9ec2a6b7bb7f043c02b\",\r\n            \"quantity\": 2\r\n        },\r\n                {\r\n            \"productId\": \"695ed9ec2a6b7bb7f043c02e\",\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://grupo118fase3infraapim.azure-api.net/orders-api/Order",
+							"protocol": "https",
+							"host": [
+								"grupo118fase3infraapim",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"orders-api",
+								"Order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5-Orders Monitor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://grupo118fase3infraapim.azure-api.net/orders-api/Order/monitor?skip=0&take=10",
+							"protocol": "https",
+							"host": [
+								"grupo118fase3infraapim",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"orders-api",
+								"Order",
+								"monitor"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
