@@ -2,8 +2,24 @@
 
 Repositório dedicado a conter diagramas C4 do sistema desenvolvido para a fase 4.
 
-# Motivação
+# Membros do Grupo
+- Sabrina Cardoso de Oliveira
+    - **Matrícula**: RM363507
+    - **Usuário Discord**: sah.mdo
+- Tiago Cristiano Koch
+    - **Matrícula**: RM361415
+    - **Usuário Discord**: tiagokoch0076
+- Tiago Victor de Oliveira
+    - **Matrícula**: RM364588
+    - **Usuário Discord**: oliveirad.tiago
+- Túlio Henrique de Paula Rezende
+    - **Matrícula**: RM360982
+    - **Usuário Discord**: tuliomamute
+- Vinícius Rossmann Nunes
+    - **Matrícula**: RM362963
+    - **Usuário Discord**: _viniciusnunes
 
+# Motivação
 Criamos um repositório separado para armazenar diversos detalhes acerca da implementação do projeto na Fase 4
 
 # Separação da aplicação em microserviços
