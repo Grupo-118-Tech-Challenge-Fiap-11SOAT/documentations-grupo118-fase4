@@ -2,6 +2,137 @@
 
 Repositório dedicado a conter diagramas C4 do sistema desenvolvido para a fase 4.
 
+# Motivação
+
+Criamos um repositório separado para armazenar diversos detalhes acerca da implementação do projeto na Fase 4
+
+# Separação da aplicação em microserviços
+Dividimos a aplicação original em alguns microsserviços de maneira a paralelizarmos o desenvolvimento e facilitar a manutenção futura do sistema. 
+
+Como parte da definição da atividade informava que a lanchonete era algo em crescimento ainda, preferimos utilizar um modelo de comunicação simples, baseado em requisições HTTP REST entre os microsserviços, evitando nesse primeiro momento uma complexidade adicional. Porém, em algums pontos da aplicação existe a possibilidade de ajustes futuros para utilização de modelo de eventos, como por exemplo:
+- na comunicação entre o serviço de pedidos e pagamentos, onde a utilização de filas poderia trazer mais robustez ao sistema.
+- na comunicaçação entre o serviço de pagamentos e pedidos, onde o serviço de pagamentos poderia publicar eventos de mudança de status de pagamento, e o serviço de pedidos poderia se inscrever nesses eventos para atualizar o status dos pedidos.
+
+A seguir estão os microsserviços criados:
+
+## 1. Módulo de Produtos
+Criamos um microsserviço dedicado à gestão do catálogo de produtos.
+Utilizamos **MongoDB** para armazenar os detalhes dos produtos, aproveitando sua flexibilidade para permitir que cada tipo de produto tenha atributos específicos, enriquecendo uma eventual visualização em um catalógo. Abaixo temos alguns exemplos de produtos inseridos em nossa base para demonstrar esse modelo flexível:
+
+### Snack
+
+```json
+{
+  "_id": {
+    "$oid": "695ed9ec2a6b7bb7f043c025"
+  },
+  "_t": [
+    "Product",
+    "Snack"
+  ],
+  "name": "X-Salada",
+  "price": {
+    "$numberDecimal": "12"
+  },
+  "isActive": true,
+  "images": [],
+  "createdAt": {
+    "DateTime": {
+      "$date": "2026-01-07T22:10:52.095Z"
+    },
+    "Ticks": {
+      "$numberLong": "639034206520956483"
+    },
+    "Offset": 0
+  },
+  "updatedAt": {
+    "DateTime": {
+      "$date": "2026-01-07T22:10:52.095Z"
+    },
+    "Ticks": {
+      "$numberLong": "639034206520956718"
+    },
+    "Offset": 0
+  },
+  "ingredients": [
+    "Pão",
+    "Queijo",
+    "Hamburgues"
+  ]
+}
+```
+
+### Drink
+
+```json
+{
+  "_id": {
+    "$oid": "695ed9ec2a6b7bb7f043c02c"
+  },
+  "_t": [
+    "Product",
+    "Drink"
+  ],
+  "name": "Pepsi",
+  "price": {
+    "$numberDecimal": "12"
+  },
+  "isActive": true,
+  "images": [],
+  "createdAt": {
+    "DateTime": {
+      "$date": "2026-01-07T22:10:52.099Z"
+    },
+    "Ticks": {
+      "$numberLong": "639034206520991314"
+    },
+    "Offset": 0
+  },
+  "updatedAt": {
+    "DateTime": {
+      "$date": "2026-01-07T22:10:52.099Z"
+    },
+    "Ticks": {
+      "$numberLong": "639034206520991316"
+    },
+    "Offset": 0
+  },
+  "size": "M",
+  "flavor": null
+}
+```
+
+## 2. Módulo de Pedidos
+Criamos um microsserviço dedicado à gestão de pedidos.
+Utilizamos **SQL Server** para armazenar os dados dos pedidos, aproveitando a estrutura relacional para garantir a integridade dos dados e facilitar consultas, como por exemplo a visualização dos pedidos para monitoramento em telas para a ordem de entrega.
+
+Iríamos em um primeiro momento, utilizar o banco PostgreSQL, porém por questões de infraestrutura (a impossibilidade de criação de um cluster na região East US, onde o nosso cluster AKS está hospedado) optamos por utilizar o SQL Server, que já estava disponível em nossa infraestrutura na Azure e já era o modelo utilizado no monolito.
+
+## 3. Módulo de Pagamentos
+Criamos um microsserviço dedicado ao processamento de pagamentos.
+Utilizamos **SQL Server** para armazenar os dados dos pagamentos para manter a compatibilidade com a implementação anterior e ganharmos tempo durante o processo de desenvolvimento.
+
+O módulo de pagamentos se comunica com a API do MercadoPago para processar as transações financeiras, informando a URL do webhook para receber notificações de status de pagamento.
+
+## 4. Módulo de Usuários
+Criamos um microsserviço dedicado à gestão de usuários e aproveitamos a Lambda function criada na fase anterior para efetivar o login e geração do JWT para uso.
+Também utilizamos **SQL Server** para armazenar os dados dos usuários e customers, mantendo a compatibilidade com a implementação anterior.
+
+# Desenho da infraestrutura geral
+
+No desenho abaixo ilustramos como é a estrutura dos recursos na Azure para suportar a aplicação.
+
+![1 - Kubernetes Architecture - Tech Challenge - Abordagem Produtiva - Fase 4.png](1%20-%20Kubernetes%20Architecture%20-%20Tech%20Challenge%20-%20Abordagem%20Produtiva%20-%20Fase%204.png)
+
+- Cliente/usuário administrativo efetuam uma requisição
+- Requisição chega no APIM
+- APIM roteia, via NGINX Ingress Controller interno, para o serviço correto no cluster AKS
+- Serviço no AKS se comunica com o banco de dados correspondente (MongoDB Atlas ou SQL Server na Azure)
+
+# Diagramas
+
+Abaixo elaboramos alguns diagramas C4 para ilustrar a arquitetura do sistema.
+
 ## Diagrama C4 - Contexto do Sistema - Sistema de Pedidos
 
 ```mermaid
