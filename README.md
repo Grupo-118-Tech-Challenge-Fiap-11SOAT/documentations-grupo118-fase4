@@ -21,6 +21,8 @@ A seguir estão os microsserviços criados:
 
 - Abordagem da API: Clean Architecture
 
+![Code Coverage - Products.png](Products/Code%20Coverage%20-%20Products.png)
+
 Criamos um microsserviço dedicado à gestão do catálogo de produtos.
 Utilizamos **MongoDB** para armazenar os detalhes dos produtos, aproveitando sua flexibilidade para permitir que cada tipo de produto tenha atributos específicos, enriquecendo uma eventual visualização em um catalógo. Abaixo temos alguns exemplos de produtos inseridos em nossa base para demonstrar esse modelo flexível:
 
@@ -113,6 +115,8 @@ Utilizamos **MongoDB** para armazenar os detalhes dos produtos, aproveitando sua
 
 - Abordagem da API: Hexagonal
 
+![Code Coverage - Orders.png](Orders/Code%20Coverage%20-%20Orders.png)
+
 Criamos um microsserviço dedicado à gestão de pedidos.
 Utilizamos **SQL Server** para armazenar os dados dos pedidos, aproveitando a estrutura relacional para garantir a integridade dos dados e facilitar consultas, como por exemplo a visualização dos pedidos para monitoramento em telas para a ordem de entrega.
 
@@ -122,7 +126,9 @@ Iríamos em um primeiro momento, utilizar o banco PostgreSQL, porém por questõ
 
 - Repositório: [tech-challenge-grupo-118-payments-fase-4](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-payments-fase-4)
 
-- Abordagem da API: Clean Architecture
+- Abordagem da API: Clean Architecture com Minimal APIs
+
+![Code Coverage - Payments.png](Payments/Code%20Coverage%20-%20Payments.png)
 
 Criamos um microsserviço dedicado ao processamento de pagamentos.
 Utilizamos **SQL Server** para armazenar os dados dos pagamentos para manter a compatibilidade com a implementação anterior e ganharmos tempo durante o processo de desenvolvimento.
@@ -134,6 +140,10 @@ O módulo de pagamentos se comunica com a API do MercadoPago para processar as t
 - Repositórios: [tech-challenge-grupo-118-users-fase-4](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-users-fase-4) e [TechChallengeFastFoodFunction](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/TechChallengeFastFoodFunction)
 
 - Abordagem da API: Hexagonal
+
+![Code Coverage - Users.png](Users/Code%20Coverage%20-%20Users.png)
+
+![Code Coverage - Lambda.png](Users/Code%20Coverage%20-%20Lambda.png)
 
 Criamos um microsserviço dedicado à gestão de usuários e aproveitamos a Lambda function criada na fase anterior para efetivar o login e geração do JWT para uso.
 Também utilizamos **SQL Server** para armazenar os dados dos usuários e customers, mantendo a compatibilidade com a implementação anterior.
