@@ -25,7 +25,7 @@ Para assistir ao vídeo de apresentação do projeto, clique na imagem abaixo:
 [![Watch the video](11SOAT%20-%20Fase%204%20-%20Grupo%20118.PNG)]()
 
 # Collection do Postman
-Para facilitar o teste dos endpoints da API, foi criada uma que contém todos os endpoints disponíveis, incluindo os de autenticação e os de criação de pedidos.
+Para facilitar o teste dos endpoints da API, foi criada uma que contém os endpoints utilizados no video.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](./Testes/postman_collection.json)
 
