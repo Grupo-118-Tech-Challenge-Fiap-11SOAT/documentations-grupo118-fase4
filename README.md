@@ -181,6 +181,88 @@ No desenho abaixo ilustramos como é a estrutura dos recursos na Azure para supo
 - APIM roteia, via NGINX Ingress Controller interno, para o serviço correto no cluster AKS
 - Serviço no AKS se comunica com o banco de dados correspondente (MongoDB Atlas ou SQL Server na Azure)
 
+# Processo de Deploy e infraestrutura como código
+
+Para facilitar o deploy e garantir um processo padronizado entre os membros do grupo, criamos templates de pipeline de CI e CD utilizando Github Actions
+
+- Repositório Template de Pipeline: [terraform-template-pipeline-grupo118-fase-3](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/terraform-template-pipeline-grupo118-fase-3)
+- Repositório Template de Helm Charts: [helm-chart-grupo118-fase-4](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/helm-chart-grupo118-fase-4)
+- Repositório do Terraform de Infra: [k8s-terraform-infra-grupo-118-fase-3](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/k8s-terraform-infra-grupo-118-fase-3)
+- Repositório do Terraform de Banco de Dados: [database-terraform-infra-grupo-118-fase-3](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/database-terraform-infra-grupo-118-fase-3)
+
+## Continous Integration
+No processo de Continous Integration (CI), cada microsserviço possui um pipeline configurado no **Github Actions** que realiza as seguintes etapas:
+
+### Durante o pull request
+- Compilação do código: validação do build do projeto em um ambiente limpo
+- Execução dos testes automatizados: executa todos os projetos de teste contidos na solução
+- Análise de qualidade de código com SonarCloud: o template de pipeline cria automaticamente o projeto no SonarCloud caso ele não exista, utilizando as variáveis de ambiente configuradas no repositório
+  - Caso o quality gate não atinja o percentual de 80%, é inserido no PR um comentário automático informando a falha na qualidade do código e o mesmo fica bloqueado para merge.
+- Build da imagem Docker: Validação se o build em um contexto de container ocorre corretamente.
+
+- Build e análise de código durante o pull request
+![CI - Build e Analise - PR.png](CI/CI%20-%20Build%20e%20Analise%20-%20PR.png)
+
+- Build Docker - PR
+![CI - Build Docker - PR.png](CI/CI%20-%20Build%20Docker%20-%20PR.png)
+
+### Na main
+Além de todos os passos acima, na main o pipeline realiza também:
+- Push da imagem Docker para o Container Registry: a imagem é enviada para o Azure Container Registry (ACR) para ser utilizada posteriormente no deploy.
+
+- Build Docker - Main
+  ![CI - Build Docker - Main.png](CI/CI%20-%20Build%20Docker%20-%20Main.png)
+
+## Continous Deployment e Helm Charts
+Mantendo a mesma filosofia de padronização, criamos um helm chart que também é salvo no ACR para que todas as aplicações o utilizem. Esse Helm chart é responsável por:
+- Criar a estrutura classica para funcionamento em Kubernetes (deployments, services, secrets)
+- Criação do Ingress interno para comunicação via APIM
+- Criação de Secret de ACR para permitir pull de imagens privadas
+
+E para o deploy temos um pipeline padrão, também via Github Actions, que realiza as seguintes etapas:
+- Mapeamento de Github secrets para variáveis de ambiente do pipeline
+- Login no ACR
+- Pull do Helm Chart
+- Proceso de substituição de variáveis no Helm Chart
+- Deploy via Helm no cluster AKS
+
+Desse modo, a configuração das variaveis que cada aplicação utiliza ficou de maneira bem flexível
+
+- Arquivo de pipeline de deploy de products como exemplo: [cd.yml](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-products-fase-4/blob/main/.github/workflows/cd.yml)
+- Arquivo de Helm Chart de products utilizado como exemplo: [values-production.yaml](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-products-fase-4/blob/main/helm/values-production.yaml)
+
+No momento do deploy, precisamos apenas informar qual a versão do Helm chart e qual a versão da imagem gera
+
+![Disparo do workflow.png](CD/Disparo%20do%20workflow.png)
+
+Feito isso, o processo acontece de forma automática
+
+![Execução do deploy.png](CD/Execu%C3%A7%C3%A3o%20do%20deploy.png)
+
+## Terraform
+
+Na parte de infraestrutura, reaproveitamos o repositório criado na fase 3 para manter a infraestrutura como código utilizando Terraform, visto que em termos de arquitetura de recursos, não tivemos mudanças.
+Já na parte de banco de dados, também reaproveitamos o terraform de banco de dados, porém acrescentando os bancos de cada serviço e um módulo novo de MongoDB Atlas para o serviço de produtos.
+
+Ambos os deploys foram realizados via Github Actions.
+
+- Deploy da infraestrutura regular
+![Deploy Infra.png](Terraform/Deploy%20Infra.png)
+
+- Deploy da infraestrutura de banco de dados
+![Deploy Infra de Banco de Dados.png](Terraform/Deploy%20Infra%20de%20Banco%20de%20Dados.png)
+
+## Secrets
+Todos os pipelines reaproveitam alguns secrets configurados no Github Actions para garantir a segurança das credenciais utilizadas durante o processo de CI/CD.
+- Credenciais Azure
+- Credenciais ACR
+- Credenciais SonarCloud
+
+Além disso, cada repositório de microsserviço possui seus próprios secrets para utilização no momento do deploy, como: 
+- Strings de conexão com banco de dados
+- Chaves de API do MercadoPago
+- Configuração de JWT
+
 # Diagramas
 
 Abaixo elaboramos alguns diagramas C4 para ilustrar a arquitetura do sistema.
