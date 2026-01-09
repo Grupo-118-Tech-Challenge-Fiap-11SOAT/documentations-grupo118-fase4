@@ -259,6 +259,24 @@ Além disso, cada repositório de microsserviço possui seus próprios secrets p
 - Chaves de API do MercadoPago
 - Configuração de JWT
 
+# Configurações
+Alguns passos, manuais até então, são necessários para o funcionamento correto do sistema:
+1. Conexão no Kubernetes via kubectl port-foward para buscar o Swagger 
+   - Como as APIs não são expostas publicamente, é preciso importar manualmente o Swagger para o APIM (efetuando o download do mesmo). Para isso, precisamos acessar as APIs via kubectl port-forward
+
+Exemplo para o módulo de produtos:
+
+```bash
+kubectl port-forward svc/tech-challenge-grupo-118-products-fase-4 8080:80 -n tech-challenge
+```
+
+2. Importação do Swagger no APIM
+   - Após baixar o Swagger via port-forward, é necessário importar o mesmo no APIM para que as APIs fiquem disponíveis para consumo
+   - No portal do APIM, selecionar "APIs" e clicar em "+ Add API"
+   - Selecionar "OpenAPI" e fazer o upload do arquivo Swagger baixado
+   - Após o upload, configurar o "Web service URL" para o endpoint correto (exemplo: http://10.10.0.10/products-api)
+     - é feito dessa maneira pois o Ingress configurado está pronto para substituir e enviar corretamente para as APIs, o path substituido.
+
 # Diagramas
 
 Abaixo elaboramos alguns diagramas C4 para ilustrar a arquitetura do sistema.
