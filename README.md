@@ -283,6 +283,9 @@ kubectl port-forward svc/tech-challenge-grupo-118-products-fase-4 8080:80 -n tec
   - Como enviamos a URL, no momento da criação do pagamento, para o MercadoPago, precisamos garantir que essa URL seja a do APIM e não a do serviço diretamente.
   - Essa URL é configurada via secrets do github no repositório de payments (secret: GS_MERCADOPAGO_NOTIFICATION_URL)
 
+4. Nos métodos que precisam estar protegidos, é necessário adicionar a policy JWT antes de encaminhar para a aplicação
+![Configuração de policy JWT](./Publicação/Configuração%20de%20policy%20JWT.png)
+
 # Diagramas
 
 Abaixo elaboramos alguns diagramas C4 para ilustrar a arquitetura do sistema.
