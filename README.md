@@ -279,7 +279,6 @@ kubectl port-forward svc/tech-challenge-grupo-118-products-fase-4 8080:80 -n tec
 
 ![Configuração de APIM.png](Publica%C3%A7%C3%A3o/Configura%C3%A7%C3%A3o%20de%20APIM.png)
 
-
 # Diagramas
 
 Abaixo elaboramos alguns diagramas C4 para ilustrar a arquitetura do sistema.
