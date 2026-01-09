@@ -1,6 +1,5 @@
 # documentations-grupo118-fase4
-
-Repositório dedicado a conter diagramas C4 do sistema desenvolvido para a fase 4.
+Criamos um repositório separado para armazenar diversos detalhes acerca da implementação do projeto na Fase 4
 
 # Membros do Grupo
 - Sabrina Cardoso de Oliveira
@@ -24,9 +23,6 @@ Repositório dedicado a conter diagramas C4 do sistema desenvolvido para a fase 
 Para assistir ao vídeo de apresentação do projeto, clique na imagem abaixo:
 
 [![Watch the video](11SOAT%20-%20Fase%204%20-%20Grupo%20118.PNG)]()
-
-# Motivação
-Criamos um repositório separado para armazenar diversos detalhes acerca da implementação do projeto na Fase 4
 
 # Separação da aplicação em microserviços
 Dividimos a aplicação original em alguns microsserviços de maneira a paralelizarmos o desenvolvimento e facilitar a manutenção futura do sistema. 
