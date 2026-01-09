@@ -16,6 +16,9 @@ Como parte da definição da atividade informava que a lanchonete era algo em cr
 A seguir estão os microsserviços criados:
 
 ## 1. Módulo de Produtos
+
+- Repositório: [tech-challenge-grupo-118-products-fase-4](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-products-fase-4)
+
 Criamos um microsserviço dedicado à gestão do catálogo de produtos.
 Utilizamos **MongoDB** para armazenar os detalhes dos produtos, aproveitando sua flexibilidade para permitir que cada tipo de produto tenha atributos específicos, enriquecendo uma eventual visualização em um catalógo. Abaixo temos alguns exemplos de produtos inseridos em nossa base para demonstrar esse modelo flexível:
 
@@ -103,18 +106,27 @@ Utilizamos **MongoDB** para armazenar os detalhes dos produtos, aproveitando sua
 ```
 
 ## 2. Módulo de Pedidos
+
+- Repositório: [tech-challenge-grupo-118-orders-fase-4](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-orders-fase-4)
+
 Criamos um microsserviço dedicado à gestão de pedidos.
 Utilizamos **SQL Server** para armazenar os dados dos pedidos, aproveitando a estrutura relacional para garantir a integridade dos dados e facilitar consultas, como por exemplo a visualização dos pedidos para monitoramento em telas para a ordem de entrega.
 
 Iríamos em um primeiro momento, utilizar o banco PostgreSQL, porém por questões de infraestrutura (a impossibilidade de criação de um cluster na região East US, onde o nosso cluster AKS está hospedado) optamos por utilizar o SQL Server, que já estava disponível em nossa infraestrutura na Azure e já era o modelo utilizado no monolito.
 
 ## 3. Módulo de Pagamentos
+
+- Repositório: [tech-challenge-grupo-118-payments-fase-4](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-payments-fase-4)
+
 Criamos um microsserviço dedicado ao processamento de pagamentos.
 Utilizamos **SQL Server** para armazenar os dados dos pagamentos para manter a compatibilidade com a implementação anterior e ganharmos tempo durante o processo de desenvolvimento.
 
 O módulo de pagamentos se comunica com a API do MercadoPago para processar as transações financeiras, informando a URL do webhook para receber notificações de status de pagamento.
 
 ## 4. Módulo de Usuários
+
+- Repositórios: [tech-challenge-grupo-118-users-fase-4](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/tech-challenge-grupo-118-payments-users-4) e [TechChallengeFastFoodFunction](https://github.com/Grupo-118-Tech-Challenge-Fiap-11SOAT/TechChallengeFastFoodFunction)
+
 Criamos um microsserviço dedicado à gestão de usuários e aproveitamos a Lambda function criada na fase anterior para efetivar o login e geração do JWT para uso.
 Também utilizamos **SQL Server** para armazenar os dados dos usuários e customers, mantendo a compatibilidade com a implementação anterior.
 
