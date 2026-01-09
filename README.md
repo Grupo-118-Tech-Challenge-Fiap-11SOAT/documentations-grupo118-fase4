@@ -19,6 +19,12 @@ Repositório dedicado a conter diagramas C4 do sistema desenvolvido para a fase 
     - **Matrícula**: RM362963
     - **Usuário Discord**: _viniciusnunes
 
+# Vídeo de Apresentação do Projeto
+
+Para assistir ao vídeo de apresentação do projeto, clique na imagem abaixo:
+
+[![Watch the video](11SOAT%20-%20Fase%204%20-%20Grupo%20118.PNG)]()
+
 # Motivação
 Criamos um repositório separado para armazenar diversos detalhes acerca da implementação do projeto na Fase 4
 
